@@ -49,11 +49,11 @@ public class Case02 {
 		// トップページの画面を開く
 		goTo("http://localhost:8080/lms");
 
-		//スクリーンショットを撮影
+		//トップページとログイン画面のスクリーンショットを撮影
 		getEvidence(new Object() {
 		});
 
-		//ログイン画面のタイトルを比較
+		//ログイン画面が出ているかどうかを比較、確認
 		final WebElement title = webDriver.findElement(By.xpath("//*[@id=\"main\"]/h2"));
 		assertEquals(title.getText(), "ログイン");
 	}
@@ -75,13 +75,15 @@ public class Case02 {
 		// 各画面表示時に10秒待機する(暗黙的)
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		//スクリーンショットを撮影
-		getEvidence(new Object() {
-		});
-
+		
 		//エラーメッセージが出てるかどうか確認、比較
 		final WebElement errorMsg = webDriver.findElement(By.className("error"));
 		assertEquals(errorMsg.getText(), "* ログインに失敗しました。");
+		
+		//エラーメッセージが出ているスクリーンショットを撮影
+				getEvidence(new Object() {
+				});
+
 
 	}
 
