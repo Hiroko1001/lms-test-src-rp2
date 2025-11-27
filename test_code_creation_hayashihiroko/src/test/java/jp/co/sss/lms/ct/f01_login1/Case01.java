@@ -54,7 +54,7 @@ public class Case01 {
 		// 各画面表示時に10秒待機する(暗黙的)
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		//スクリーンショットを撮影
+		//トップページとログイン画面のスクリーンショットを撮影
 		getEvidence(new Object() {
 		});
 		
