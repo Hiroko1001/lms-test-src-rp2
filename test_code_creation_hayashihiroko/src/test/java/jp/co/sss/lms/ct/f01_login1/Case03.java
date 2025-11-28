@@ -3,6 +3,8 @@ package jp.co.sss.lms.ct.f01_login1;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -25,12 +27,16 @@ public class Case03 {
 	/** 前処理 */
 	@BeforeAll
 	static void before() {
+
+		System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
 		createDriver();
 	}
 
 	/** 後処理 */
 	@AfterAll
 	static void after() {
+
+		System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
 		closeDriver();
 	}
 
@@ -56,7 +62,27 @@ public class Case03 {
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() {
-		// TODO ここに追加
+		// ログインが出来ていることを確認
+
+		//ログインIDにDBに登録されている「StudentAA01」を入力
+		webDriver.findElement(By.name("loginId")).sendKeys("StudentAA01");
+		//パスワードにDBに登録されている「StudentAA01a」を入力
+		webDriver.findElement(By.name("password")).sendKeys("StudentAA01a");
+
+		//ログインボタンを押下する
+		webDriver.findElement(By.className("btn-primary")).click();
+
+		// 各画面表示時に10秒待機する(暗黙的)
+		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		//コース詳細画面のスクリーンショットを撮影
+		getEvidence(new Object() {
+		});
+
+		//コース詳細画面が出てるかどうかを確認、比較
+		final WebElement course = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/ol/li"));
+		assertEquals(course.getText(), "コース詳細");
+
 	}
 
 }
