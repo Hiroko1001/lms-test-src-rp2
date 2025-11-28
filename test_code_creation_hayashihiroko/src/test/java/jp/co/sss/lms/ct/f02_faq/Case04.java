@@ -63,9 +63,9 @@ public class Case04 {
 	void test02() {
 		// ログインが出来ていることを確認
 
-		//ログインIDにDBに登録されてない「a」を入力
+		//ログインIDにDBに登録されている「StudentAA01」を入力
 		webDriver.findElement(By.name("loginId")).sendKeys("StudentAA01");
-		//パスワードにDBに登録されてない「a」を入力
+		//パスワードにDBに登録されている「StudentAA01a」を入力
 		webDriver.findElement(By.name("password")).sendKeys("StudentAA01a");
 
 		//ログインボタンを押下する
