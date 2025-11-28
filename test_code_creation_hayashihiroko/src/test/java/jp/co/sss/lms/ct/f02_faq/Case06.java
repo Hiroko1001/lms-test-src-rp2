@@ -164,7 +164,7 @@ public class Case06 {
 
 		//回答が出ているかどうかを確認、比較
 		final WebElement result = webDriver.findElement(By.xpath("//*[@id=\"answer-h[${status.index}]\"]"));
-		assertEquals(result.getText(), "");
+		assertEquals(result.getText(), "A");
 
 	}
 
